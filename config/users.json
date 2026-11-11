@@ -1,0 +1,11 @@
+{
+  "Admin" : {
+    "passwordHash" : "$2a$12$ROQVCrg2neGYpi.NudKFLur0uYH5L7zITmJO3UXbQ/0e/CTAdqemi",
+    "status" : "admin"
+  },
+
+  "User" : {
+    "passwordHash" : "$2a$12$c5D3tao71qVzRlsCvQWCy.B7whB1boiUrgVOKpVve/F5p5udNiHne",
+    "status" : "user"
+  }
+}

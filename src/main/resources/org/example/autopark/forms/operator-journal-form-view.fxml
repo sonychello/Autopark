@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="96.0" prefWidth="639.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.autopark.client.forms.OperatorJournalFormViewController">
+
+    <children>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="639.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <padding>
+                <Insets left="15.0" right="15.0" top="5.0" />
+            </padding>
+
+            <children>
+                <HBox fx:id="sendOffFields" alignment="CENTER" spacing="10.0">
+                    <children>
+                        <TextField fx:id="timeOutField" prefWidth="190.0" promptText="Time out" />
+                        <TextField fx:id="autoIdField" prefWidth="100.0" promptText="Auto ID" />
+                        <TextField fx:id="routeIdField" prefWidth="100.0" promptText="Route ID" />
+                    </children>
+                </HBox>
+
+                <HBox fx:id="returnFields" alignment="CENTER" spacing="10.0">
+                    <children>
+                        <TextField fx:id="timeInField" prefWidth="190.0" promptText="dd.MM.yyyy HH:mm" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onSaveClick" prefHeight="28.0" prefWidth="54.0" text="Save" />
+            </children>
+         <padding>
+            <Insets bottom="15.0" right="15.0" />
+         </padding>
+        </HBox>
+    </children>
+</AnchorPane>

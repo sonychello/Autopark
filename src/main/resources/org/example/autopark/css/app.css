@@ -1,0 +1,143 @@
+
+/* Общий фон экранов */
+.root {
+    -fx-background-color: #202A35;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+}
+
+/* Заголовки */
+.label {
+    -fx-text-fill: #E8F0EB;
+}
+
+/* Кнопки */
+.button {
+    -fx-background-color: #267A53;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+/* Кнопка при наведении мыши */
+.button:hover {
+    -fx-background-color: #329968;
+}
+
+/* Кнопка при нажатии */
+.button:pressed {
+    -fx-background-color: #1D6041;
+}
+
+
+/* Главное меню */
+.menu-bar {
+    -fx-background-color: #18232C;
+    -fx-padding: 4px 8px;
+}
+
+/* Названия меню */
+.menu-bar .label {
+    -fx-text-fill: #E8F0EB;
+}
+
+/* Пункты меню при наведении */
+.menu-bar .menu:hover,
+.menu-bar .menu:showing {
+    -fx-background-color: #267A53;
+}
+
+/* Выпадающее меню */
+.context-menu {
+    -fx-background-color: #263542;
+    -fx-background-radius: 4px;
+    -fx-padding: 5px;
+}
+
+/* Текст пунктов выпадающего меню */
+.context-menu .menu-item .label {
+    -fx-text-fill: #E8F0EB;
+}
+
+/* Подсветка пункта выпадающего меню */
+.context-menu .menu-item:focused {
+    -fx-background-color: #267A53;
+}
+
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+/* Фон таблицы */
+.table-view {
+    -fx-background-color: #202A35;
+    -fx-control-inner-background: #202A35;
+    -fx-control-inner-background-alt: #263542;
+    -fx-border-color: #3A4A56;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Ячейки таблицы */
+.table-view .table-cell {
+    -fx-text-fill: #E8F0EB;
+    -fx-border-color: transparent #354550 #354550 transparent;
+    -fx-padding: 8px;
+}
+
+/* Заголовки столбцов */
+.table-view .column-header-background {
+    -fx-background-color: #18232C;
+}
+
+.table-view .column-header {
+    -fx-background-color: #18232C;
+    -fx-border-color: transparent #354550 #354550 transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #E8F0EB;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+}
+
+/* Строка при наведении */
+.table-view .table-row-cell:hover {
+    -fx-background-color: #30443D;
+}
+
+/* Выбранная строка */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #267A53;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+/* Пустая область таблицы */
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell:empty {
+    -fx-background-color: #202A35;
+    -fx-border-color: transparent;
+}
+
+/* Нижняя и боковая области заголовков */
+.table-view .filler,
+.table-view .corner {
+    -fx-background-color: #18232C;
+}
+
+/* Область отчёта */
+.report-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: #3A4A56;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Внутренняя область прокрутки */
+.report-scroll > .viewport {
+    -fx-background-color: #202A35;
+}
