@@ -2,8 +2,10 @@
 package org.example.autopark.client;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
 import org.example.autopark.ApplicationContext;
 import org.example.autopark.client.ReportsControllers.ReportsViewController;
 import org.example.autopark.client.directoriesControllers.CarsViewController;
@@ -24,6 +26,20 @@ public class MainViewController {
     }
 
     @FXML
+    private void initialize() {
+        mainPane.sceneProperty().addListener((observable, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
+                    if (newWindow instanceof Stage stage) {
+                        stage.setMinWidth(600);
+                        stage.setMinHeight(400);
+                    }
+                });
+            }
+        });
+    }
+
+    @FXML
     private void onPersonnelClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/autopark/directories/personnel-view.fxml"));
         loader.setControllerFactory(controllerClass -> {
@@ -33,7 +49,7 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
     }
 
     @FXML
@@ -46,7 +62,7 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
     }
 
     @FXML
@@ -59,7 +75,7 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
     }
 
     @FXML
@@ -72,7 +88,7 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
     }
 
     @FXML
@@ -85,7 +101,7 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
     }
 
     @FXML
@@ -98,6 +114,34 @@ public class MainViewController {
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
 
-        mainPane.setCenter(loader.load());
+        showView(loader.load());
+    }
+
+    private void showView(Parent view) {
+        mainPane.setCenter(view);
+
+        javafx.application.Platform.runLater(() -> {
+            mainPane.applyCss();
+            mainPane.layout();
+
+            Stage stage = (Stage) mainPane.getScene().getWindow();
+            var scene = stage.getScene();
+            Parent root = scene.getRoot();
+
+            root.applyCss();
+            root.layout();
+
+            // Размеры системных границ окна
+            double widthDecoration = stage.getWidth() - scene.getWidth();
+            double heightDecoration = stage.getHeight() - scene.getHeight();
+
+            // Минимальные размеры всего окна
+            double minWidth = root.minWidth(-1) + widthDecoration;
+            double minHeight = root.minHeight(-1) + heightDecoration;
+
+            stage.setMinWidth(minWidth);
+            stage.setMinHeight(minHeight);
+
+        });
     }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.autopark.client.forms.CarFormViewController;
@@ -43,6 +44,9 @@ public class CarsViewController {
 
     @FXML
     private Button deleteButton;
+
+    @FXML
+    private HBox buttonsBox;
 
     private final CarsService service;
 
@@ -88,6 +92,14 @@ public class CarsViewController {
         insertButton.setVisible(isAdmin);
         editButton.setVisible(isAdmin);
         deleteButton.setVisible(isAdmin);
+
+        javafx.application.Platform.runLater(() -> {
+            System.out.println("ButtonsBox height: " + buttonsBox.getHeight());
+            System.out.println("ButtonsBox Y: " + buttonsBox.getLayoutY());
+
+            System.out.println("Insert button height: " + insertButton.getHeight());
+            System.out.println("Insert button Y: " + insertButton.getLayoutY());
+        });
     }
 
     @FXML

@@ -5,14 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.autopark.client.directoriesControllers.RoutesViewController">
-
-    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<BorderPane stylesheets="@../css/app.css"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.autopark.client.directoriesControllers.RoutesViewController">
 
         <top>
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" prefHeight="37.0" prefWidth="600.0" text="Routes" textAlignment="CENTER" textFill="#007641" BorderPane.alignment="CENTER">
@@ -22,7 +22,11 @@
             </Label>
         </top>
         <center>
-            <TableView fx:id="routeTable" minWidth="500.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="routeTable"
+                       BorderPane.alignment="CENTER"
+                       maxWidth="Infinity"
+                       minWidth="350.0"
+                       minHeight="100.0">
                 <columns>
                     <TableColumn fx:id="idColumn" text="Id" />
                     <TableColumn fx:id="nameColumn" text="Name" />
@@ -35,15 +39,40 @@
             </columnResizePolicy>
             </TableView>
         </center>
-        <bottom>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0" spacing="40.0" BorderPane.alignment="CENTER">
-                <children>
-                    <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="20.0" prefWidth="70.0" text="Insert" onAction="#onInsertClick"/>
-                    <Button fx:id="editButton" mnemonicParsing="false" prefHeight="20.0" prefWidth="70.0" text="Edit" onAction="#onEditClick"/>
-                    <Button fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="20.0" prefWidth="70.0" text="Delete" onAction="#onDeleteClick"/>
-                </children>
-            </HBox>
-        </bottom>
+    <bottom>
+        <HBox alignment="CENTER"
+              minHeight="70.0"
+              prefHeight="70.0"
+              spacing="40.0">
+            <padding>
+                <Insets top="10.0" bottom="20.0" />
+            </padding>
+            <children>
+                <Button fx:id="insertButton"
+                        mnemonicParsing="false"
+                        onAction="#onInsertClick"
+                        minHeight="30.0"
+                        prefHeight="30.0"
+                        prefWidth="70.0"
+                        text="Insert" />
+
+                <Button fx:id="editButton"
+                        mnemonicParsing="false"
+                        onAction="#onEditClick"
+                        minHeight="30.0"
+                        prefHeight="30.0"
+                        prefWidth="70.0"
+                        text="Edit" />
+
+                <Button fx:id="deleteButton"
+                        mnemonicParsing="false"
+                        onAction="#onDeleteClick"
+                        minHeight="30.0"
+                        prefHeight="30.0"
+                        prefWidth="70.0"
+                        text="Delete" />
+            </children>
+        </HBox>
+    </bottom>
     </BorderPane>
 
-</AnchorPane>

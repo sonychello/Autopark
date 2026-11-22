@@ -36,11 +36,15 @@ public class AuthViewController {
 
         if (authenticatedUser.isEmpty()) {
             logInInformation.setText("Incorrect nick name or password");
+            logInInformation.setVisible(true);
+            logInInformation.setManaged(true);
             return;
         }
 
         User user = authenticatedUser.get();
         logInInformation.setText("Successful log in!");
+        logInInformation.setVisible(false);
+        logInInformation.setManaged(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/autopark/main-view.fxml"));
         loader.setControllerFactory(controllerClass -> {
             if (controllerClass == MainViewController.class) {
@@ -55,5 +59,11 @@ public class AuthViewController {
         stage.show();
         ((Stage) inputPassword.getScene().getWindow()).close();
 
+    }
+
+    @FXML
+    public void initialize() {
+        logInInformation.setVisible(false);
+        logInInformation.setManaged(false);
     }
 }
