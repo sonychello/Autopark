@@ -52,7 +52,8 @@
                 <Insets top="10.0" bottom="20.0" />
             </padding>
             <children>
-                <Button mnemonicParsing="false"
+                <Button fx:id="insertButton"
+                        mnemonicParsing="false"
                         onAction="#onInsertClick"
                         minHeight="30.0"
                         prefHeight="30.0"

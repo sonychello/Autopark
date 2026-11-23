@@ -2,43 +2,116 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="96.0" prefWidth="639.0" stylesheets="@../css/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.autopark.client.forms.OperatorJournalFormViewController">
+<AnchorPane prefHeight="120.0"
+            prefWidth="639.0"
+            minWidth="600.0"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.autopark.client.forms.OperatorJournalFormViewController"
+            stylesheets="@../css/app.css">
 
     <children>
-        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="639.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-
-            <padding>
-                <Insets left="15.0" right="15.0" top="5.0" />
-            </padding>
+        <VBox spacing="15.0"
+              AnchorPane.topAnchor="5.0"
+              AnchorPane.bottomAnchor="5.0"
+              AnchorPane.leftAnchor="15.0"
+              AnchorPane.rightAnchor="15.0">
 
             <children>
-                <HBox fx:id="sendOffFields" alignment="CENTER" spacing="10.0">
+                <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+
                     <children>
-                        <TextField fx:id="timeOutField" prefWidth="190.0" promptText="Time out" />
-                        <TextField fx:id="autoIdField" prefWidth="100.0" promptText="Auto ID" />
-                        <TextField fx:id="routeIdField" prefWidth="100.0" promptText="Route ID" />
+                        <GridPane fx:id="sendOffFields"
+                                  hgap="10.0"
+                                  HBox.hgrow="ALWAYS">
+
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50.0" hgrow="ALWAYS"/>
+                                <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS"/>
+                                <ColumnConstraints percentWidth="25.0" hgrow="ALWAYS"/>
+                            </columnConstraints>
+
+                            <children>
+                                <VBox spacing="5.0" GridPane.columnIndex="0">
+                                    <Label text="Time out">
+                                        <font>
+                                            <Font name="System Bold" size="12.0"/>
+                                        </font>
+                                    </Label>
+
+                                    <TextField fx:id="timeOutField"
+                                               promptText="Time out"
+                                               maxWidth="Infinity"/>
+
+                                    <Label text="Format: dd.MM.yyyy HH:mm"/>
+                                </VBox>
+
+                                <VBox spacing="5.0" GridPane.columnIndex="1">
+                                    <Label text="Auto ID">
+                                        <font>
+                                            <Font name="System Bold" size="12.0"/>
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="autoIdField"
+                                               promptText="Auto ID"
+                                               maxWidth="Infinity"/>
+                                </VBox>
+
+                                <VBox spacing="5.0" GridPane.columnIndex="2">
+                                    <Label text="Route ID">
+                                        <font>
+                                            <Font name="System Bold" size="12.0"/>
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="routeIdField"
+                                               promptText="Route ID"
+                                               maxWidth="Infinity"/>
+                                </VBox>
+                            </children>
+                        </GridPane>
+
+                        <VBox fx:id="returnFields"
+                              spacing="5.0"
+                              HBox.hgrow="ALWAYS">
+
+                            <Label text="Time in">
+                                <font>
+                                    <Font name="System Bold" size="12.0"/>
+                                </font>
+                            </Label>
+
+                            <TextField fx:id="timeInField"
+                                       promptText="Time in"
+                                       maxWidth="Infinity"/>
+
+                            <Label text="Format: dd.MM.yyyy HH:mm"/>
+                        </VBox>
                     </children>
                 </HBox>
 
-                <HBox fx:id="returnFields" alignment="CENTER" spacing="10.0">
+                <HBox alignment="CENTER_RIGHT">
+                    <padding>
+                        <Insets bottom="15.0"/>
+                    </padding>
+
                     <children>
-                        <TextField fx:id="timeInField" prefWidth="190.0" promptText="dd.MM.yyyy HH:mm" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onSaveClick"
+                                prefHeight="28.0"
+                                prefWidth="70.0"
+                                text="Save"/>
                     </children>
                 </HBox>
             </children>
-        </HBox>
-
-        <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <children>
-                <Button mnemonicParsing="false" onAction="#onSaveClick" prefHeight="28.0" prefWidth="54.0" text="Save" />
-            </children>
-         <padding>
-            <Insets bottom="15.0" right="15.0" />
-         </padding>
-        </HBox>
+        </VBox>
     </children>
 </AnchorPane>

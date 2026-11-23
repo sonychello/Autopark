@@ -93,13 +93,6 @@ public class CarsViewController {
         editButton.setVisible(isAdmin);
         deleteButton.setVisible(isAdmin);
 
-        javafx.application.Platform.runLater(() -> {
-            System.out.println("ButtonsBox height: " + buttonsBox.getHeight());
-            System.out.println("ButtonsBox Y: " + buttonsBox.getLayoutY());
-
-            System.out.println("Insert button height: " + insertButton.getHeight());
-            System.out.println("Insert button Y: " + insertButton.getLayoutY());
-        });
     }
 
     @FXML
@@ -142,25 +135,50 @@ public class CarsViewController {
         }
     }
 
+
     @FXML
     private void onInsertClick() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/autopark/forms/car-form-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/org/example/autopark/forms/car-form-view.fxml")
+        );
+
         loader.setControllerFactory(controllerClass -> {
             if (controllerClass == CarFormViewController.class) {
                 return new CarFormViewController(service);
             }
             throw new IllegalArgumentException("Unknown controller: " + controllerClass);
         });
+
         try {
             Parent root = loader.load();
+
             CarFormViewController controller = loader.getController();
-            controller.setOnSuccess(() -> carsTable.getItems().setAll(service.getData(0)));
+            controller.setOnSuccess(() ->
+                    carsTable.getItems().setAll(service.getData(0))
+            );
+
             Stage stage = new Stage();
             stage.setTitle("Add car");
-            stage.setScene(new Scene(root));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
             stage.initOwner(carsTable.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
+
+            // Минимальные размеры по содержимому формы
+            root.applyCss();
+            root.layout();
+
+            stage.setMinWidth(root.minWidth(-1) + 16);
+            stage.setMinHeight(root.minHeight(-1) + 39);
+
+            // Максимальные размеры окна
+            stage.setMaxWidth(1000);
+            stage.setMaxHeight(300);
+
             stage.show();
+
         } catch (IOException e) {
             showError(
                     "Window error",
@@ -168,7 +186,6 @@ public class CarsViewController {
                     "Не удалось открыть форму добавления автомобиля.\n" + e.getMessage()
             );
         }
-
     }
 
     @FXML
@@ -197,9 +214,23 @@ public class CarsViewController {
             controller.setOnSuccess(() -> carsTable.getItems().setAll(service.getData(0)));
             Stage stage = new Stage();
             stage.setTitle("Edit car");
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
             stage.initOwner(carsTable.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
+
+            // Минимальные размеры по содержимому формы
+            root.applyCss();
+            root.layout();
+
+            stage.setMinWidth(root.minWidth(-1) + 16);
+            stage.setMinHeight(root.minHeight(-1) + 39);
+
+            // Максимальные размеры окна
+            stage.setMaxWidth(1000);
+            stage.setMaxHeight(300);
+
             stage.show();
         } catch (IOException e) {
             showError(

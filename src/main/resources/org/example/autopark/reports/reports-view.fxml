@@ -44,6 +44,10 @@
                   <VBox alignment="TOP_CENTER" spacing="15.0"
                         BorderPane.alignment="CENTER">
                      <children>
+                        <Label text="Enter the route name (you can copy it from the Routes directory)"
+                               wrapText="true"
+                               maxWidth="520.0" />
+
                         <TextField fx:id="routeNameField"
                                    prefHeight="34.0"
                                    maxWidth="520.0"

@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.autopark.model.JournalRecord;
 import org.example.autopark.service.OperatorJournalService;
@@ -30,6 +32,12 @@ public class OperatorJournalFormViewController {
     @FXML
     private TextField timeInField;
 
+    @FXML
+    private GridPane sendOffFields;
+
+    @FXML
+    private VBox returnFields;
+
     private final OperatorJournalService service;
     private final JournalRecord editRecord;
 
@@ -54,17 +62,11 @@ public class OperatorJournalFormViewController {
     private void initialize() {
         boolean isReturnMode = editRecord != null;
 
-        timeInField.setVisible(isReturnMode);
-        timeInField.setManaged(isReturnMode);
+        returnFields.setVisible(isReturnMode);
+        returnFields.setManaged(isReturnMode);
 
-        timeOutField.setVisible(!isReturnMode);
-        timeOutField.setManaged(!isReturnMode);
-
-        autoIdField.setVisible(!isReturnMode);
-        autoIdField.setManaged(!isReturnMode);
-
-        routeIdField.setVisible(!isReturnMode);
-        routeIdField.setManaged(!isReturnMode);
+        sendOffFields.setVisible(!isReturnMode);
+        sendOffFields.setManaged(!isReturnMode);
 
         if (isReturnMode && editRecord.time_in() != null) {
             timeInField.setText(
