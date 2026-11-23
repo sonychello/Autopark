@@ -12,8 +12,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="120.0"
-            prefWidth="639.0"
-            minWidth="600.0"
             xmlns="http://javafx.com/javafx/26"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.autopark.client.forms.OperatorJournalFormViewController"
@@ -32,7 +30,9 @@
                     <children>
                         <GridPane fx:id="sendOffFields"
                                   hgap="10.0"
-                                  HBox.hgrow="ALWAYS">
+                                  HBox.hgrow="ALWAYS"
+                                  minWidth="600.0"
+                                  prefWidth="639.0">
 
                             <columnConstraints>
                                 <ColumnConstraints percentWidth="50.0" hgrow="ALWAYS"/>
@@ -81,7 +81,9 @@
 
                         <VBox fx:id="returnFields"
                               spacing="5.0"
-                              HBox.hgrow="ALWAYS">
+                              HBox.hgrow="ALWAYS"
+                              minWidth="300.0"
+                              prefWidth="400.0">
 
                             <Label text="Time in">
                                 <font>

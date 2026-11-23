@@ -145,6 +145,17 @@ public class RoutesViewController {
             stage.setScene(new Scene(root));
             stage.initOwner(routeTable.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
+            // Минимальные размеры по содержимому формы
+            root.applyCss();
+            root.layout();
+
+            stage.setMinWidth(root.minWidth(-1) + 16);
+            stage.setMinHeight(root.minHeight(-1) + 39);
+
+            // Максимальные размеры окна
+            stage.setMaxWidth(600);
+            stage.setMaxHeight(300);
+
             stage.show();
         } catch (IOException e) {
             showError(
@@ -185,6 +196,17 @@ public class RoutesViewController {
             stage.setScene(new Scene(root));
             stage.initOwner(routeTable.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
+            // Минимальные размеры по содержимому формы
+            root.applyCss();
+            root.layout();
+
+            stage.setMinWidth(root.minWidth(-1) + 16);
+            stage.setMinHeight(root.minHeight(-1) + 39);
+
+            // Максимальные размеры окна
+            stage.setMaxWidth(500);
+            stage.setMaxHeight(300);
+
             stage.show();
         } catch (IOException e) {
             showError(
